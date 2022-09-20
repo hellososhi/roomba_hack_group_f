@@ -2,7 +2,7 @@
 
 RoombaTeleop::RoombaTeleop()
     :local_nh("~"),
-     auto_flag(false), move_flag(false), dock_flag(false)
+     auto_flag(true), move_flag(true), dock_flag(false)
 {
     //subscriber
     cmd_sub = nh.subscribe("/planner/cmd_vel",1, &RoombaTeleop::CommandCallback, this);
