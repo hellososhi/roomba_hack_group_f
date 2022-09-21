@@ -69,7 +69,7 @@ class ObjectDetection:
     def process(self):
         image_path = "/root/roomba_hack/catkin_ws/src/three-dimensions_tutorial/images/"
 
-        self.set_goal(3.5, 3.0, pi)
+        self.set_goal(3.5, 4.0, pi/2)
         self.action_client.send_goal(self.goal)
 
         while not rospy.is_shutdown() and self.action_client.get_state() != GoalStatus.SUCCEEDED:

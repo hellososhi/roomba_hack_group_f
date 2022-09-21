@@ -19,7 +19,6 @@ import cv2
 import copy
 import time
 
-
 class DetectionDistance:
     def __init__(self):
         rospy.init_node('detection_distance', anonymous=True)
@@ -53,7 +52,7 @@ class DetectionDistance:
         self.x = data.pose.pose.position.x
         self.y = data.pose.pose.position.y
         self.yaw = self.get_yaw_from_quaternion(data.pose.pose.orientation)
-
+    
     def set_goal(self, x, y, yaw):
         self.goal = MoveBaseGoal()  # goalのメッセージの定義
         self.goal.target_pose.header.frame_id = 'map'  # マップ座標系でのゴールとして設定
@@ -157,7 +156,7 @@ class DetectionDistance:
             self.rgb_image = None
 
         print(sum_diff)
-        if sum_diff > 20000000:
+        if sum_diff > 1500000:
             cx = (x1+x2)/2
             if cx > rgb_image.shape[1]/2:
                 self.turn(5, -0.5)
@@ -169,7 +168,7 @@ class DetectionDistance:
                 self.turn(5, 0.5)
             else:
                 self.turn(5, -0.5)
-        self.go_straight(2.2)
+        self.go_straight(2.0)
 
 
 if __name__ == '__main__':
